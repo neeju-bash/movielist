@@ -1,30 +1,36 @@
 package com.example.demo.model;
 
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.util.List;
 @Entity
 @Table(name = "movies")
 public class Movie {
 
-
+    @Id
+    @GeneratedValue(strategy= GenerationType.IDENTITY)
     private String id;
+    @Column(name="NAME")
     private String name;
+    @Column(name="DIRECTOR")
     private String director;
+    @Column(name="RATING")
     private String rating;
+    @Column(name="DESCRIPTION")
     private String description;
+    @Column(name="DEPARTMENT")
+    private List<Catagory> catagory;
 
 
     public Movie() {
     }
 
-    public Movie(String id, String name, String director, String rating, String description, List<Category> category) {
+    public Movie(String id, String name, String director, String rating, String description, List<Catagory> category) {
         this.id = id;
         this.name = name;
         this.director = director;
         this.rating = rating;
         this.description = description;
-        this.category = category;
+        this.catagory = catagory;
     }
 
     public String getId() {
@@ -67,12 +73,12 @@ public class Movie {
         this.description = description;
     }
 
-    public List<Category> getCategory() {
-        return category;
+    public List<Catagory> getCatagory() {
+        return catagory;
     }
 
-    public void setCategory(List<Category> category) {
-        this.category = category;
+    public void setCatagory(List<Catagory> catagory) {
+        this.catagory = catagory;
     }
 
     @Override
@@ -83,7 +89,7 @@ public class Movie {
                 ", director='" + director + '\'' +
                 ", rating='" + rating + '\'' +
                 ", description='" + description + '\'' +
-                ", category=" + category +
+                ", category=" + catagory +
                 '}';
     }
 }
