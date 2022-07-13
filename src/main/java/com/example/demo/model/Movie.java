@@ -1,43 +1,39 @@
 package com.example.demo.model;
 
 import javax.persistence.*;
-import java.util.List;
+
 @Entity
 @Table(name = "movies")
 public class Movie {
 
     @Id
-    @GeneratedValue(strategy= GenerationType.IDENTITY)
-    private String id;
-    @Column(name="NAME")
+    @GeneratedValue
+    private Integer id;
     private String name;
-    @Column(name="DIRECTOR")
+
     private String director;
-    @Column(name="RATING")
+
     private String rating;
-    @Column(name="DESCRIPTION")
+
     private String description;
-    @Column(name="DEPARTMENT")
-    private List<Catagory> catagory;
 
 
     public Movie() {
     }
 
-    public Movie(String id, String name, String director, String rating, String description, List<Catagory> category) {
+    public Movie(Integer id, String name, String director, String rating, String description) {
         this.id = id;
         this.name = name;
         this.director = director;
         this.rating = rating;
         this.description = description;
-        this.catagory = catagory;
     }
 
-    public String getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -73,13 +69,6 @@ public class Movie {
         this.description = description;
     }
 
-    public List<Catagory> getCatagory() {
-        return catagory;
-    }
-
-    public void setCatagory(List<Catagory> catagory) {
-        this.catagory = catagory;
-    }
 
     @Override
     public String toString() {
@@ -89,7 +78,6 @@ public class Movie {
                 ", director='" + director + '\'' +
                 ", rating='" + rating + '\'' +
                 ", description='" + description + '\'' +
-                ", category=" + catagory +
                 '}';
     }
 }

@@ -1,18 +1,37 @@
 package com.example.demo.service;
-
+import java.util.List;
+import java.util.Optional;
 
 import com.example.demo.model.Movie;
+import com.example.demo.repository.MovieRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
-import java.util.List;
+@Service
+public class MovieService {
 
-public interface MovieService {
-    public List<Movie> retrievemovies();
+    @Autowired
+    private MovieRepository movieRepository;
 
-    public Movie getMovie(long id);
+    public List<Movie> retrievemovies(){
+        List<Movie> movies = (List<Movie>) movieRepository.findAll();
+        return movies;
+    }
 
-    public void saveMovie(Movie movie);
+    public Movie getMovie(int id){
+        Optional<Movie> optEmp = movieRepository.findById(id);
+        return optEmp.get();
+    }
 
-    public void deleteMovie(long id);
+    public void saveMovie(Movie movie){
+        movieRepository.save(movie);
+    }
 
-    public void updateMovie(Movie movie);
+    public void deleteMovie(int id){
+        movieRepository.deleteById(id);
+    }
+
+    public void updateMovie(Movie movie){
+        movieRepository.save(movie);
+    }
 }

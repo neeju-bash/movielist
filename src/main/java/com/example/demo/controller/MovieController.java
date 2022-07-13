@@ -21,9 +21,6 @@ public class MovieController {
     @Autowired
     private MovieService movieService;
 
-    public void setMovieService(MovieService movieService) {
-        this.movieService = movieService;
-    }
 
     @GetMapping("/api/movies")
     public List<Movie> getMovies() {
@@ -32,7 +29,7 @@ public class MovieController {
     }
 
     @GetMapping("/api/movies/{id}")
-    public Movie getMovie(@PathVariable(name="id")Long id) {
+    public Movie getMovie(@PathVariable(name="id")int id) {
         return movieService.getMovie(id);
     }
 
@@ -43,14 +40,14 @@ public class MovieController {
     }
 
     @DeleteMapping("/api/movies/{id}")
-    public void deleteMovie(@PathVariable(name="id")Long id){
+    public void deleteMovie(@PathVariable(name="id")int id){
         movieService.deleteMovie(id);
         System.out.println("Movie Deleted Successfully");
     }
 
     @PutMapping("/api/movies/{id}")
     public void updateMovie(@RequestBody Movie movie,
-                               @PathVariable(name="id")Long id){
+                               @PathVariable(name="id")int id){
         Movie mov = movieService.getMovie(id);
         if(mov != null){
             movieService.updateMovie(movie);
