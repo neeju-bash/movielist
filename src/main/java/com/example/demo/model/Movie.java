@@ -1,6 +1,8 @@
 package com.example.demo.model;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "movies")
@@ -16,17 +18,23 @@ public class Movie {
     private String rating;
 
     private String description;
+    private String year;
+    private String producer;
 
+    private List<String> cast = new ArrayList<String>();
 
     public Movie() {
     }
 
-    public Movie(Integer id, String name, String director, String rating, String description) {
+    public Movie(Integer id, String name, String director, String rating, String description, String year, String producer, List<String> cast) {
         this.id = id;
         this.name = name;
         this.director = director;
         this.rating = rating;
         this.description = description;
+        this.year = year;
+        this.producer = producer;
+        this.cast = cast;
     }
 
     public Integer getId() {
@@ -69,16 +77,29 @@ public class Movie {
         this.description = description;
     }
 
-
-    @Override
-    public String toString() {
-        return "Movie{" +
-                "id='" + id + '\'' +
-                ", name='" + name + '\'' +
-                ", director='" + director + '\'' +
-                ", rating='" + rating + '\'' +
-                ", description='" + description + '\'' +
-                '}';
+    public String getYear() {
+        return year;
     }
-}
 
+    public void setYear(String year) {
+        this.year = year;
+    }
+
+    public String getProducer() {
+        return producer;
+    }
+
+    public void setProducer(String producer) {
+        this.producer = producer;
+    }
+
+    public List<String> getCast() {
+        return cast;
+    }
+
+    public void setCast(List<String> cast) {
+        this.cast = cast;
+    }
+
+
+}

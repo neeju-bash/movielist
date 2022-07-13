@@ -28,29 +28,10 @@ public class MovieController {
         return movies;
     }
 
-    @GetMapping("/api/movies/{id}")
-    public Movie getMovie(@PathVariable(name="id")int id) {
-        return movieService.getMovie(id);
-    }
-
-
     @PostMapping("/api/movies")
     public String saveMovie(@RequestBody Movie movie) {
         movieService.saveMovie(movie);
         return "Movie Saved Successfully";
-    }
-
-    @DeleteMapping("/api/movies/{id}")
-    public void deleteMovie(@PathVariable(name="id")int id){
-        movieService.deleteMovie(id);
-        System.out.println("Movie Deleted Successfully");
-    }
-
-    @PutMapping("/api/movies/{id}")
-    public void updateMovie(@RequestBody Movie movie,
-                               @PathVariable(name="id")int id){
-             movieService.updateMovie(movie,id);
-             System.out.println("Movie Updated Successfully");
     }
 
 }
