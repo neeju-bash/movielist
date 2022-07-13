@@ -23,8 +23,8 @@ public class MovieService {
         return optEmp.get();
     }
 
-    public void saveMovie(Movie movie){
-        movieRepository.save(movie);
+    public Movie saveMovie(Movie movie){
+       return movieRepository.save(movie);
     }
 
     public void deleteMovie(int id){
