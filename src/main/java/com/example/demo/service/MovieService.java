@@ -19,8 +19,8 @@ public class MovieService {
     }
 
     public Movie getMovie(int id){
-        Optional<Movie> optEmp = movieRepository.findById(id);
-        return optEmp.get();
+        Optional<Movie> optmov = movieRepository.findById(id);
+        return optmov.get();
     }
 
     public Movie saveMovie(Movie movie){
@@ -31,7 +31,15 @@ public class MovieService {
         movieRepository.deleteById(id);
     }
 
-    public void updateMovie(Movie movie){
-        movieRepository.save(movie);
+    public void updateMovie(Movie movie,int id){
+        Movie oldmovie=null;
+        Optional<Movie> optmov=movieRepository.findById(id);
+        if(optmov.isPresent()) {
+            oldmovie=optmov.get();
+            oldmovie.setName(movie.getName());
+            oldmovie.setDirector(movie.getDirector());
+            oldmovie.setDescription(movie.getDescription());
+            movieRepository .save(oldmovie);
+        }
     }
 }

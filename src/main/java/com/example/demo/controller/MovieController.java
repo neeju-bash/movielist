@@ -33,10 +33,11 @@ public class MovieController {
         return movieService.getMovie(id);
     }
 
+
     @PostMapping("/api/movies")
-    public void saveMovie(Movie movie){
+    public String saveMovie(@RequestBody Movie movie) {
         movieService.saveMovie(movie);
-        System.out.println("Movie Saved Successfully");
+        return "Movie Saved Successfully";
     }
 
     @DeleteMapping("/api/movies/{id}")
@@ -48,11 +49,8 @@ public class MovieController {
     @PutMapping("/api/movies/{id}")
     public void updateMovie(@RequestBody Movie movie,
                                @PathVariable(name="id")int id){
-        Movie mov = movieService.getMovie(id);
-        if(mov != null){
-            movieService.updateMovie(movie);
-        }
-
+             movieService.updateMovie(movie,id);
+             System.out.println("Movie Updated Successfully");
     }
 
 }
