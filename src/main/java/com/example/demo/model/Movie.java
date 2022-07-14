@@ -1,7 +1,6 @@
 package com.example.demo.model;
 
 import javax.persistence.*;
-import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -18,23 +17,22 @@ public class Movie {
     private String rating;
 
     private String description;
-    private String year;
-    private String producer;
+    private Category category;
+    private List<Actor> actors;
 
-    private List<String> cast = new ArrayList<String>();
 
     public Movie() {
     }
 
-    public Movie(Integer id, String name, String director, String rating, String description, String year, String producer, List<String> cast) {
+    public Movie(Integer id, String name, String director, String rating, String description,Category category, List<Actor> actors) {
         this.id = id;
         this.name = name;
         this.director = director;
         this.rating = rating;
         this.description = description;
-        this.year = year;
-        this.producer = producer;
-        this.cast = cast;
+        this.category = category;
+        this.actors = actors;
+
     }
 
     public Integer getId() {
@@ -77,29 +75,33 @@ public class Movie {
         this.description = description;
     }
 
-    public String getYear() {
-        return year;
+    public Category getCategory() {
+        return category;
     }
 
-    public void setYear(String year) {
-        this.year = year;
+    public void setCategory(Category category) {
+        this.category = category;
     }
 
-    public String getProducer() {
-        return producer;
+    public List<Actor> getActors() {
+        return actors;
     }
 
-    public void setProducer(String producer) {
-        this.producer = producer;
+    public void setActors(List<Actor> actors) {
+        this.actors = actors;
     }
 
-    public List<String> getCast() {
-        return cast;
+    @Override
+    public String toString() {
+        return "Movie{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", director='" + director + '\'' +
+                ", rating='" + rating + '\'' +
+                ", description='" + description + '\'' +
+                ", category=" + category +
+                ", actors=" + actors +
+                '}';
     }
-
-    public void setCast(List<String> cast) {
-        this.cast = cast;
-    }
-
-
 }
+

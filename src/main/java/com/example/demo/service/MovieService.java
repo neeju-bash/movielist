@@ -6,8 +6,10 @@ import com.example.demo.model.Movie;
 import com.example.demo.repository.MovieRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.validation.annotation.Validated;
 
 @Service
+@Validated
 public class MovieService {
 
     @Autowired
