@@ -18,6 +18,7 @@ public class Movie {
 
     private String description;
     private Category category;
+    @OneToMany(targetEntity=Actor.class, mappedBy="movie", fetch=FetchType.EAGER)
     private List<Actor> actors;
 
 
