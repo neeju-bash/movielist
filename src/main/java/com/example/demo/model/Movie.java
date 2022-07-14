@@ -1,97 +1,36 @@
 package com.example.demo.model;
 
-import javax.persistence.*;
-import javax.validation.constraints.NotBlank;
-import java.util.List;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
+import javax.persistence.*;
+import java.util.List;
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 @Entity
 @Table(name = "movies")
 public class Movie {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    @NotBlank(message = "Name is mandatory")
+
     private String name;
-    @NotBlank(message = "Director is mandatory")
+
     private String director;
 
     private String rating;
+    private String year;
 
     private String description;
+
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinColumn(name = "categoryid")
     private Category category;
-    private List<Actor> actors;
 
 
-    public Movie() {
-    }
-
-    public Movie(Integer id, String name, String director, String rating, String description,Category category, List<Actor> actors) {
-        this.id = id;
-        this.name = name;
-        this.director = director;
-        this.rating = rating;
-        this.description = description;
-        this.category = category;
-        this.actors = actors;
-
-    }
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getDirector() {
-        return director;
-    }
-
-    public void setDirector(String director) {
-        this.director = director;
-    }
-
-    public String getRating() {
-        return rating;
-    }
-
-    public void setRating(String rating) {
-        this.rating = rating;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public Category getCategory() {
-        return category;
-    }
-
-    public void setCategory(Category category) {
-        this.category = category;
-    }
-
-    public List<Actor> getActors() {
-        return actors;
-    }
-
-    public void setActors(List<Actor> actors) {
-        this.actors = actors;
-    }
 
     @Override
     public String toString() {
@@ -102,7 +41,7 @@ public class Movie {
                 ", rating='" + rating + '\'' +
                 ", description='" + description + '\'' +
                 ", category=" + category +
-                ", actors=" + actors +
+                ", year=" + year +
                 '}';
     }
 }
