@@ -1,5 +1,6 @@
 package com.example.demo.controller;
 
+import com.example.demo.dto.MovieDTO;
 import com.example.demo.model.Movie;
 import com.example.demo.service.MovieService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,14 +21,14 @@ public class MovieController {
 
 
     @GetMapping("/api/movies")
-    public List<Movie> getMovies() {
-        List<Movie> movies = movieService.retrievemovies();
-        return movies;
+    public List<MovieDTO> getMovies() {
+        List<MovieDTO> moviesdto = movieService.retrievemovies();
+        return moviesdto;
     }
 
     @PostMapping("/api/movies")
-    public String saveMovie(@RequestBody Movie movie) {
-        movieService.saveMovie(movie);
+    public String saveMovie(@RequestBody MovieDTO movieDTO) {
+        movieService.saveMovie(movieDTO);
         return "Movie Saved Successfully";
     }
 

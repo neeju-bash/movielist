@@ -5,8 +5,6 @@ import com.example.demo.model.Movie;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.convention.MatchingStrategies;
 
-import java.util.List;
-
 public class DTOMapper {
     private ModelMapper mapper;
 
@@ -29,7 +27,7 @@ public class DTOMapper {
        movie.setYear(moviedto.getYear());
        movie.setCategory(Category.setCategoryname);
     }*/
-  public MovieDTO convertEntityToDto(List<Movie> movie){
+  private MovieDTO convertEntityToDto(Movie movie){
       mapper.getConfiguration()
               .setMatchingStrategy(MatchingStrategies.LOOSE);
       MovieDTO moviedto = new MovieDTO();
