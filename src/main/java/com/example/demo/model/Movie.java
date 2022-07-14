@@ -5,7 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.util.List;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -15,34 +15,21 @@ public class Movie {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Long id;
 
     private String name;
 
     private String director;
 
     private String rating;
-    private String year;
+    private Long release_year;
 
     private String description;
 
-    @ManyToMany(fetch = FetchType.EAGER)
-    @JoinColumn(name = "categoryid")
+    @ManyToOne
+    @JoinColumn(name = "CATEGORY_ID")
     private Category category;
 
 
-
-    @Override
-    public String toString() {
-        return "Movie{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", director='" + director + '\'' +
-                ", rating='" + rating + '\'' +
-                ", description='" + description + '\'' +
-                ", category=" + category +
-                ", year=" + year +
-                '}';
-    }
 }
 

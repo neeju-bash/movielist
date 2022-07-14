@@ -1,5 +1,8 @@
 package com.example.demo.service;
 import java.util.List;
+
+import com.example.demo.dto.MovieDTO;
+import com.example.demo.dtoconverter.DTOMapper;
 import com.example.demo.model.Movie;
 import com.example.demo.repository.MovieRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,13 +15,15 @@ public class MovieService {
 
     @Autowired
     private MovieRepository movieRepository;
-
-    public List<Movie> retrievemovies(){
+    @Autowired
+    private DTOMapper dtomapper;
+    public List<MovieDTO> retrievemovies(){
         List<Movie> movies = (List<Movie>) movieRepository.findAll();
-        return movies;
+        return (List<MovieDTO>) dtomapper.convertEntityToDto(movies);
     }
 
     public Movie saveMovie(Movie movie){
+
 
        return movieRepository.save(movie);
     }
