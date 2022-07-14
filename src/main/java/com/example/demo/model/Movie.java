@@ -1,6 +1,7 @@
 package com.example.demo.model;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 import java.util.List;
 
 @Entity
@@ -10,15 +11,15 @@ public class Movie {
     @Id
     @GeneratedValue
     private Integer id;
+    @NotBlank(message = "Name is mandatory")
     private String name;
-
+    @NotBlank(message = "Director is mandatory")
     private String director;
 
     private String rating;
 
     private String description;
     private Category category;
-    @OneToMany(targetEntity=Actor.class, mappedBy="movie", fetch=FetchType.EAGER)
     private List<Actor> actors;
 
 
