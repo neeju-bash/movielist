@@ -1,10 +1,8 @@
 package com.example.demo.service;
-import java.security.DomainLoadStoreParameter;
 import java.util.List;
 import java.util.stream.Collectors;
 
 import com.example.demo.dto.MovieDTO;
-import com.example.demo.dtoconverter.DTOMapper;
 import com.example.demo.model.Movie;
 import com.example.demo.repository.MovieRepository;
 import org.modelmapper.ModelMapper;

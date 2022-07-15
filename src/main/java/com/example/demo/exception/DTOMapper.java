@@ -1,4 +1,4 @@
-package com.example.demo.dtoconverter;
+package com.example.demo.exception;
 
 import com.example.demo.dto.MovieDTO;
 import com.example.demo.model.Movie;

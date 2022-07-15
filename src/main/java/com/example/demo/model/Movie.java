@@ -26,7 +26,7 @@ public class Movie {
 
     private String description;
 
-    @ManyToOne
+    @ManyToOne(cascade = {CascadeType.ALL})
     @JoinColumn(name = "CATEGORY_ID")
     private Category category;
 
