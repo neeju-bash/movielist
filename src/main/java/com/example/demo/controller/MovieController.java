@@ -1,6 +1,7 @@
 package com.example.demo.controller;
 
 import com.example.demo.dto.MovieDTO;
+import com.example.demo.exception.GenericException;
 import com.example.demo.model.Movie;
 import com.example.demo.service.MovieService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,9 +29,9 @@ public class MovieController {
     }
 
     @PostMapping("/api/movies")
-    public String saveMovie(@RequestBody @Valid  MovieDTO movieDTO) {
+    public void saveMovie(@RequestBody @Valid  MovieDTO movieDTO) throws GenericException {
         movieService.saveMovie(movieDTO);
-        return "Movie Saved Successfully";
+       // return "Movie Saved Successfully";
     }
 
 }

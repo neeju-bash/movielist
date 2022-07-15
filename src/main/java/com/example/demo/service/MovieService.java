@@ -1,4 +1,5 @@
 package com.example.demo.service;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -29,6 +30,14 @@ public class MovieService {
     }
 
     public Movie saveMovie(MovieDTO movieDTO){
+
+       List<MovieDTO> movielist = (List<MovieDTO>) movieRepository.findAll().stream()
+                .map(this::convertEntityToDto).collect(Collectors.toList());
+        for(MovieDTO i : movielist){
+            if((i.getName().equals(movieDTO.getName()))&&(i.getRelease_year().equals(movieDTO.getRelease_year()))){
+
+            }
+        }
 
        return movieRepository.save(convertDtoToEntity(movieDTO));
     }
