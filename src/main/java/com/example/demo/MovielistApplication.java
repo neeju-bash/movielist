@@ -12,10 +12,6 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @EnableSwagger2
 @EnableWebMvc
 public class MovielistApplication {
-	@Bean
-	public ModelMapper modelMapper(){
-		return new ModelMapper();
-	}
 
 	public static void main(String[] args) {
 		SpringApplication.run(MovielistApplication.class, args);
