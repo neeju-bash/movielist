@@ -1,4 +1,4 @@
-package com.example.demo.dto;
+package com.example.demo.controller.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -8,6 +8,9 @@ import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 
+
+//DTO class of Movie
+//For data transfer to client
 @Data
 public class MovieDTO {
     @NotBlank(message = "Movie name sould not be null")

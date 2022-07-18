@@ -6,6 +6,8 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
+// Entity class of Movie
+//associated table movies
 @Data
 @AllArgsConstructor
 @NoArgsConstructor

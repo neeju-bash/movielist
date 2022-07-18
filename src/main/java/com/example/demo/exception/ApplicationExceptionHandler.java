@@ -12,6 +12,9 @@ import java.util.Map;
 
 @RestControllerAdvice
 public class ApplicationExceptionHandler {
+
+    //Excpetion handler for MethodArgumentNotValidException
+    //return error hashmap
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public Map<String, String> invalidargumenthandler(MethodArgumentNotValidException e){
@@ -22,6 +25,9 @@ public class ApplicationExceptionHandler {
         });
         return errorMap;
     }
+
+    //Excpetion handler for GenericException
+    //return error hashmap
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
     @ExceptionHandler(GenericException.class)
     public Map<String, String> businesserrorhandler(GenericException e){
