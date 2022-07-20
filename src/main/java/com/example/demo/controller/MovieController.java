@@ -1,6 +1,6 @@
 package com.example.demo.controller;
 
-import com.example.demo.controller.dto.MovieDTO;
+import com.example.demo.dto.MovieDTO;
 import com.example.demo.dtoconvertor.InformationMapper;
 import com.example.demo.exception.GenericException;
 import com.example.demo.model.Movie;
@@ -22,7 +22,7 @@ import java.util.List;
 @RestController
 public class MovieController {
 
-    private static final Logger log = LoggerFactory.getLogger(MovieService.class);
+     Logger log = LoggerFactory.getLogger(MovieService.class);
 
     @Autowired
     private MovieService movieService;
@@ -33,6 +33,7 @@ public class MovieController {
     public List<MovieDTO> getMovies() {
        log.debug("inside MovieController.getMovies() method");
        List<Movie> movies = movieService.retrievemovies();
+       log.error("MovieController.getMovies() method");
 
        return mapper.convertEntityToDto(movies);
    }

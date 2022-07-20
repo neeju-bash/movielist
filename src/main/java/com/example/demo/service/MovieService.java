@@ -15,7 +15,7 @@ import org.springframework.validation.annotation.Validated;
 @Validated
 public class MovieService {
 
-    private static final Logger log = LoggerFactory.getLogger(MovieService.class);
+   Logger log = LoggerFactory.getLogger(MovieService.class);
 
     @Autowired
     private MovieRepository movieRepository;

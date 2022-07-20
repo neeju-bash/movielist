@@ -1,5 +1,5 @@
 package com.example.demo.dtoconvertor;
-import com.example.demo.controller.dto.MovieDTO;
+import com.example.demo.dto.MovieDTO;
 import com.example.demo.model.Movie;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.convention.MatchingStrategies;
