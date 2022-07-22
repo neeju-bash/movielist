@@ -26,16 +26,14 @@ public class MovieController {
 
     @Autowired
     private MovieService movieService;
-    @Autowired
-    private  InformationMapper mapper;
 
    @GetMapping("/api/movies")
     public List<MovieDTO> getMovies() {
        log.debug("inside MovieController.getMovies() method");
-       List<Movie> movies = movieService.retrievemovies();
+       List<MovieDTO> movieDTOS = movieService.retrievemovies();
        log.error("MovieController.getMovies() method");
 
-       return mapper.convertEntityToDto(movies);
+       return movieDTOS;
    }
 
     @PostMapping("/api/movies")
@@ -43,9 +41,8 @@ public class MovieController {
 
         log.debug("inside MovieController.saveMovie() method");
 
-        Movie movie=mapper.convertDtoToEntity(movieDTO);
-        movieService.saveMovie(movie);
-        return mapper.convertEntityToDto(movie);
+        movieService.saveMovie(movieDTO);
+        return movieDTO;
     }
 
 }
